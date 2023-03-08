@@ -1,2 +1,2 @@
 #!/bin/bash
-We are script writing /n
+We are script writing.
