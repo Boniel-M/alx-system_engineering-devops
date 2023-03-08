@@ -1,2 +1,1 @@
-#!/bin/bash
-Practising how to PWD and absolute path. /n
+Practising how to PWD and absolute path.
