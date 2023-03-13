@@ -1,2 +1,2 @@
 #!/bin/bash
-cat 1-confused_smiley "(Ôo)'
+echo '"'(Ôo)'\'
