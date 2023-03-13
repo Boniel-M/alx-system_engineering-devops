@@ -1,2 +1,2 @@
 #!/bin/bash
-sort | grep -i "root"| head -3 /etc/passwd
+grep -i "root"| head -3 /etc/passwd
