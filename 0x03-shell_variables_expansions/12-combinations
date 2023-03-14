@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $ a{a..z} |tr " " "\n"
+echo  a{a..z} a{o..z} |tr " " "\n"
