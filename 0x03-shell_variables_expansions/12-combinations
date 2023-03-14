@@ -1,2 +1,2 @@
 #!/bin/bash
-echo  a{a..z} b{a..z} c{a..z} d{a..z} |tr " " "\n"
+echo  a{a..z} b{a..n} c{o..z} |tr " " "\n"
