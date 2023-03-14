@@ -1,2 +1,2 @@
 #!/bin/bash
-pritf '%x\n' "%d"
+pritf '%x\n' "$%d"
