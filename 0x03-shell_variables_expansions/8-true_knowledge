@@ -1,2 +1,2 @@
 #!/bin/bash
-export TRUEKNOWLEDGE="$((128+(value)))"
+TRUEKNOWLEDGE="$((128+value))"
