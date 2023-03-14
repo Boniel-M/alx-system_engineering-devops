@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$(((value) + 128))"
+echo "$(($value+128))"
