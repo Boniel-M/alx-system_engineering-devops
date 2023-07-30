@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# This script displays lines containing the word "bash" from the process list.
+# This script displays the PID and process name of processes containing the word "bash" using awk.
 
-# shellcheck disable=SC2009
-# Use 'ps' and 'grep' to filter lines containing the word "bash" and exclude the script itself
-ps aux | grep bash | grep -v grep
+# Get the process list using 'awk' and filter lines containing the word "bash"
+# Print the PID (2nd field) and the process name (11th field) separated by a space
+ps -e -o pid,cmd | awk '/bash/ && !/awk/ { print $1, $2 }'
