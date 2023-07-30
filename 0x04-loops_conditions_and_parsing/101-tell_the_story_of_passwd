@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# This script displays a fictional story based on the content of the /etc/passwd file using the while loop + IFS.
+# This script displays the content of the /etc/passwd file in the specified format using the while loop + IFS.
 
 # Using a while loop to read each line of the /etc/passwd file
-while IFS=: read -r username _ groupid _ _ homedir shell; do
+while IFS=: read -r username _ userid groupid _ comment homedir shell; do
     echo "The user $username is part of the $groupid gang, lives in $homedir and rides $shell."
-    echo "User ID's place is protected by the passcode PASSWORD, more info about the user here: USER ID INFO"
+    echo "$userid's place is protected by the passcode x, more info about the user here: $comment"
     echo
 done < /etc/passwd
