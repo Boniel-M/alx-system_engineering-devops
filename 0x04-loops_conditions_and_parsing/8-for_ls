@@ -2,12 +2,12 @@
 # This script displays the content of the current directory in a list format, showing only the part of the name after the first dash.
 
 for file in *; do
-    # Check if the file is not a hidden file and contains a dash
+    # Check if the file is a regular file and contains a dash
     if [ ! -f "$file" ] || [[ "$file" == .* ]] || [[ "$file" != *-* ]]; then
         continue
     fi
 
     # Extract the part of the name after the first dash
-    filename="${file#*-}"
+    filename=$(echo "$file" | cut -d '-' -f 2-)
     echo "$filename"
 done
