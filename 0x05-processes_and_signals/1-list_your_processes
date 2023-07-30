@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# This script displays a list of currently running processes.
+# This script displays lines containing the word "bash" from the process list.
 
-# Use the 'ps' command with options to show all processes in a user-oriented format
-# with process hierarchy (tree view) and limit the output to the first 50 lines using 'head'
-ps axf | head -50
+# shellcheck disable=SC2009
+# Use 'ps' and 'grep' to filter lines containing the word "bash" and exclude the script itself
+ps aux | grep bash | grep -v grep
