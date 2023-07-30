@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script displays a list of currently running processes.
+
+# Use the 'ps' command to list all processes, including those without a TTY
+# The 'axjf' options show all processes in a BSD format with the process hierarchy (tree view).
+ps axjf
