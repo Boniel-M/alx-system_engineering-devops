@@ -1,15 +1,12 @@
 #!/usr/bin/env ruby
 
 def match_repetition_token_0(input_string)
-  # Regular expression to match an empty string (i.e., "School" appears 0 times)
-  regex = /School{0}/
+  # Regular expression to match the pattern hbn, hbtn, hbttn, hbtttn, hbttttn, and hbtttttn
+  regex = /hbt*n/
 
-  # Check if the input string matches the regex
-  if input_string =~ regex
-    puts input_string
-  else
-    puts "No match"
-  end
+  # Find all matches in the input string and print them
+  matches = input_string.scan(regex)
+  matches.each { |match| puts match }
 end
 
 # Accept the first command-line argument as input_string
