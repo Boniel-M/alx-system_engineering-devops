@@ -1,15 +1,12 @@
 #!/usr/bin/env ruby
 
 def match_repetition_token_1(input_string)
-  # Regular expression to match "School" exactly 1 time
-  regex = /School{1}/
+  # Regular expression to match the pattern htn, hbtn, hbbtn, and hbbbtn
+  regex = /hb+t*n/
 
-  # Check if the input string matches the regex
-  if input_string =~ regex
-    puts input_string
-  else
-    puts "No match"
-  end
+  # Find all matches in the input string and print them
+  matches = input_string.scan(regex)
+  matches.each { |match| puts match }
 end
 
 # Accept the first command-line argument as input_string
