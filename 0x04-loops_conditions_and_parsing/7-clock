@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Initialize hours
+
+hours=0
+
+while [ $hours -le 12 ]
+do
+    # Display the hour
+    echo "Hour: $hours"
+    
+    minutes=1
+    
+    while [ $minutes -le 59 ]
+    do
+        # Display the minutes
+        echo $minutes
+        
+        # Increment minutes
+        minutes=$((minutes + 1))
+        
+        # Limit the output to the first 70 lines
+        if [ "$minutes" -gt 59 ]; then
+            break
+        fi
+    done
+    
+    # Increment hours
+    hours=$((hours + 1))
+    
+    # Limit the output to the first 70 lines
+    if [ "$hours" -gt 12 ]; then
+        break
+    fi
+done | head -n 70
