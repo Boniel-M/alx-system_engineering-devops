@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
-# Display the part of the name after the first dash for regular files in the
-#current directory, excluding hidden files.
+# Display the part of the name after the first dash for regular files
 
 for file in *; do
     if [ -f "$file" ] && [[ ! "$file" =~ ^\. ]]; then
