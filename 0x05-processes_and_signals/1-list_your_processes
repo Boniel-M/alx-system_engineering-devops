@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Use the ps command to display processes with the desired options
 
 ps auxf
