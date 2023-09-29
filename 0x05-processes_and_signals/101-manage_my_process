@@ -1,40 +1,42 @@
 #!/usr/bin/env bash
-# This script manages the my_process daemon.
+# This init script manages the manage_my_process daemon.
 
-# Function to start the my_process daemon
-start_my_process() {
-  if [ -f "/var/run/my_process.pid" ]; then
-    echo "my_process is already running."
-  else
-    nohup bash -c "while true; do echo 'I am alive!' >> /tmp/my_process; sleep 2; done" &
-    echo $! > /var/run/my_process.pid
-    echo "manage_my_process started."
-  fi
-}
+# Path to the manage_my_process script
+MANAGE_SCRIPT="./manage_my_process.sh"
 
-# Function to stop the my_process daemon
-stop_my_process() {
+# Function to check if manage_my_process is already running
+is_running() {
   if [ -f "/var/run/my_process.pid" ]; then
     pid=$(cat /var/run/my_process.pid)
-    kill "$pid"
-    rm -f /var/run/my_process.pid
-    echo "manage_my_process stopped."
+    if ps -p "$pid" > /dev/null; then
+      return 0 # Process is running
+    else
+      rm -f /var/run/my_process.pid
+      return 1 # Process is not running
+    fi
   else
-    echo "my_process is not running."
+    return 1 # Process is not running
   fi
 }
 
-# Start, stop, or restart the my_process daemon based on the argument
+# Start, stop, or restart the manage_my_process daemon based on the argument
 case "$1" in
   start)
-    start_my_process
+    if is_running; then
+      echo "manage_my_process is already running."
+    else
+      $MANAGE_SCRIPT start
+    fi
     ;;
   stop)
-    stop_my_process
+    if is_running; then
+      $MANAGE_SCRIPT stop
+    else
+      echo "manage_my_process is not running."
+    fi
     ;;
   restart)
-    stop_my_process
-    start_my_process
+    $MANAGE_SCRIPT restart
     ;;
   *)
     echo "Usage: $0 {start|stop|restart}"
