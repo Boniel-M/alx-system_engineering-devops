@@ -1,6 +1,2 @@
 #!/usr/bin/env bash
-
-The OSI (Open Systems Interconnection) model is structured according to the 2 option, which is "from lowest to highest level." 
-The model comprises 7 layers that represent various levels of functionality in a network communication system. 
-It begins with the Physical Layer, which is the lowest level, and moves up to the Application Layer, the highest level. 
-These layers provide a framework for understanding and implementing network protocols and services, enabling communication between different network devices and systems.
+22
