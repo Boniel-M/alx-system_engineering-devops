@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Check if the script is running with root privileges
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run this script as root."
+    exit 1
+fi
+
+# Define the desired IP addresses
+localhost_ip="127.0.0.2"
+facebook_ip="8.8.8.8"
+
+# Modify the /etc/hosts file to configure the IP addresses
+echo "$localhost_ip localhost" > /etc/hosts
+echo "$facebook_ip facebook.com" >> /etc/hosts
+
+# Notify the user that the changes have been made
+echo "Configured localhost to resolve to $localhost_ip"
+echo "Configured facebook.com to resolve to $facebook_ip"
