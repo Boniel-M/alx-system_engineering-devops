@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Check if the script is running with root privileges
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run this script as root."
+    exit 1
+fi
+
+# Listen on port 98 and display received data
+nc -l -p 98
