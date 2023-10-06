@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-
 # Display listening ports with PID and program name using ss
+
 sudo ss -tuln | awk '
     NR > 1 {
         if ($1 == "tcp") {
