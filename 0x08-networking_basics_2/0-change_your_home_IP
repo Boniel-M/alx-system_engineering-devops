@@ -1,19 +1,11 @@
 #!/usr/bin/env bash
-# Check if the script is running with root privileges
+# Check if the script is running inside a Docker container
 
-if [ "$EUID" -ne 0 ]; then
-    echo "Please run this script as root."
-    exit 1
+if [ -f "/.dockerenv" ]; then
+    # Modify /etc/hosts to change localhost and facebook.com resolutions
+    echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts
+    echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
+    echo "Hosts file updated. You may need to restart networking or the container for changes to take effect."
+else
+    echo "This script should be run inside a Docker container. It will modify the hosts file of the container."
 fi
-
-# Define the desired IP addresses
-localhost_ip="127.0.0.2"
-facebook_ip="8.8.8.8"
-
-# Modify the /etc/hosts file to configure the IP addresses
-echo "$localhost_ip localhost" > /etc/hosts
-echo "$facebook_ip facebook.com" >> /etc/hosts
-
-# Notify the user that the changes have been made
-echo "Configured localhost to resolve to $localhost_ip"
-echo "Configured facebook.com to resolve to $facebook_ip"
