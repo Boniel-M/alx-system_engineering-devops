@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-
 # Use ip command to display active IPv4 IPs and filter for lines containing "inet"
+
 ip addr show | grep -Eo 'inet ([0-9]{1,3}\.){3}[0-9]{1,3}' | awk '{print $2}'
