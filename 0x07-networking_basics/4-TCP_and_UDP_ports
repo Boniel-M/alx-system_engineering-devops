@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-# Display listening ports with PID and program name
-sudo netstat -tuln | awk '
-    NR > 2 {
-        split($4, a, ":")
+# Display listening ports with PID and program name using ss
+sudo ss -tuln | awk '
+    NR > 1 {
         if ($1 == "tcp") {
-            printf "%-10s %-21s %-10s %-15s %-30s\n", $1, $4, $6, $7, $9
+            printf "%-10s %-21s %-10s %-15s %-30s\n", $1, $5, $2, $3, $7
         } else if ($1 == "udp") {
-            printf "%-10s %-21s %-10s %-30s\n", $1, $4, $6, $7
+            printf "%-10s %-21s %-10s %-30s\n", $1, $5, $2, $3
         }
     }
 ' | sort -k4,4n
